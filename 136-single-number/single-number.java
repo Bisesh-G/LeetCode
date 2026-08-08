@@ -7,4 +7,4 @@ class Solution {
         }
         return ans;
     }
-}
+}//n^n=0,,n^0=n,,(^ is XOR)
