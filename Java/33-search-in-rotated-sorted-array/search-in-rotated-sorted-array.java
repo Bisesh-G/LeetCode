@@ -3,47 +3,47 @@ class Solution {
     public int search(int[] nums, int target) {
 
         int n = nums.length;
-        int pivot = getPivot(nums);
+        int pivot = pivot(nums);
         int end = n - 1;
 
         if (target >= nums[pivot] && target <= nums[end]) {
-            return binarySearch(nums, target, pivot, end);
+            return bS(nums, target, pivot, end);
         } else {
-            return binarySearch(nums, target, 0, pivot - 1);
+            return bS(nums, target, 0, pivot - 1);
         }
     }
 
-    private int getPivot(int[] nums) {
+    public int pivot(int[] nums) {
 
-        int start = 0;
-        int end = nums.length - 1;
+        int s = 0;
+        int e = nums.length - 1;
 
-        while (start < end) {
+        while (s < e) {
 
-            int mid = start + (end - start) / 2;
+            int mid = (s + e) / 2;
 
             if (nums[mid] >= nums[0]) {
-                start = mid + 1;
+                s = mid + 1;
             } else {
-                end = mid;
+                e = mid;
             }
         }
 
-        return start;
+        return s;
     }
 
-    private int binarySearch(int[] nums, int target, int start, int end) {
+    public int bS(int[] nums, int target, int s, int e) {
 
-        while (start <= end) {
+        while (s <= e) {
 
-            int mid = start + (end - start) / 2;
+            int mid = (s + e) / 2;
 
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] > target) {
-                end = mid - 1;
+                e = mid - 1;
             } else {
-                start = mid + 1;
+                s = mid + 1;
             }
         }
 
